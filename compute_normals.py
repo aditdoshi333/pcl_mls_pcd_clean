@@ -19,18 +19,16 @@ def compute_normals(input_point_cloud_path: str, output_point_cloud_path:str, nu
     
     """
     
-    rgb = pymeshlab.MeshSet()
-    rgb.load_new_mesh(input_point_cloud_path)
-    rgb.generate_sampling_poisson_disk(samplenum = number_of_points)
-    print(f"Sampling down RGB gltf took: {time.time()-t0:1f}sec")
+    pcd = pymeshlab.MeshSet()
+    pcd.load_new_mesh(input_point_cloud_path)
+    pcd.compute_normal_for_point_clouds(k = number_of_neighbors, smooth_iter = smooth_iter)
+    pcd.save_current_mesh(output_point_cloud_path, save_vertex_normal = True)
 
-    # # Save intermediate thermal and rgb with normals [meshLab]
-    t0 = time.time()
-    print("Saving intermediate RGB and Thermal with Normals ....")
-    thermal.save_current_mesh(thermal_sampled_point_cloud, save_vertex_normal = True)
-    rgb.save_current_mesh(rgb_sampled_point_cloud, save_vertex_normal = True)
-    print(f"Saving downsampled Thermal and RGB took: {time.time()-t0:1f}sec")
 
+if __name__ == "__main__":
+    input_point_cloud_path = "/home/airflow/gcs/data/ouster/ouster_point_clouds/2021-08-05_10-00-00_ouster_point_cloud.ply"
+    output_point_cloud_path = "/home/airflow/gcs/data/ouster/ouster_point_clouds/2021-08-05_10-00-00_ouster_point_cloud_with_normals.ply"
+    compute_normals(input_point_cloud_path, output_point_cloud_path)
     
     
     

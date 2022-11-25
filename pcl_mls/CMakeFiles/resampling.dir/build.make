@@ -168,6 +168,8 @@ resampling: /usr/lib/x86_64-linux-gnu/libICE.so
 resampling: /usr/lib/x86_64-linux-gnu/libX11.so
 resampling: /usr/lib/x86_64-linux-gnu/libXext.so
 resampling: /usr/lib/x86_64-linux-gnu/libXt.so
+resampling: /usr/lib/gcc/x86_64-linux-gnu/9/libgomp.so
+resampling: /usr/lib/x86_64-linux-gnu/libpthread.so
 resampling: CMakeFiles/resampling.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/ouster_mesh_script/pcl_mls/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable resampling"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/resampling.dir/link.txt --verbose=$(VERBOSE)

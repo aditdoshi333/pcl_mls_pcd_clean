@@ -19,6 +19,7 @@ main (int argc, char** argv)
 
   // Init object (second point type is for the normals, even if unused)
   pcl::MovingLeastSquares<pcl::PointXYZ, pcl::PointNormal> mls;
+  mls.setNumberOfThreads(omp_get_max_threads());
  
  // mls.setComputeNormals (true);
 
@@ -29,8 +30,9 @@ main (int argc, char** argv)
   mls.setSearchRadius (0.1);
 
   // Reconstruct
+  std::cout << "Reconstructing" << std::endl;
   mls.process (mls_points);
-
+  std::cout <<"Done" << std::endl;
   // Save output
   pcl::io::savePCDFile ("/home/ubuntu/ouster_mesh_script/subsample_mls_done.pcd", mls_points);
 }
