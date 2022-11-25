@@ -1,0 +1,4 @@
+xvfb-run cloudcompare.CloudCompare -SILENT  -O lio_d10.ply  -SS SPATIAL 0.005  -C_EXPORT_FMT PLY      -SAVE_CLOUDS   FILE "subsample.ply"
+
+
+

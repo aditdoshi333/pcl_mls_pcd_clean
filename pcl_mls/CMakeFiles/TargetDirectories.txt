@@ -1,0 +1,3 @@
+/home/ubuntu/ouster_mesh_script/pcl_mls/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/ouster_mesh_script/pcl_mls/CMakeFiles/edit_cache.dir
+/home/ubuntu/ouster_mesh_script/pcl_mls/CMakeFiles/resampling.dir
