@@ -21,13 +21,13 @@ def compute_normals(input_point_cloud_path: str, output_point_cloud_path:str, nu
     
     pcd = pymeshlab.MeshSet()
     pcd.load_new_mesh(input_point_cloud_path)
-    pcd.compute_normal_for_point_clouds(k = number_of_neighbors, smooth_iter = smooth_iter)
+    pcd.compute_normal_for_point_clouds(k = number_of_neighbors, smoothiter = smooth_iter)
     pcd.save_current_mesh(output_point_cloud_path, save_vertex_normal = True)
 
 
 if __name__ == "__main__":
-    input_point_cloud_path = "/home/airflow/gcs/data/ouster/ouster_point_clouds/2021-08-05_10-00-00_ouster_point_cloud.ply"
-    output_point_cloud_path = "/home/airflow/gcs/data/ouster/ouster_point_clouds/2021-08-05_10-00-00_ouster_point_cloud_with_normals.ply"
+    input_point_cloud_path = "/home/ubuntu/ouster_mesh_script/subsample_mls_done.ply"
+    output_point_cloud_path = "/home/ubuntu/ouster_mesh_script/subsample_mls_with_normals_done.ply"
     compute_normals(input_point_cloud_path, output_point_cloud_path)
     
     

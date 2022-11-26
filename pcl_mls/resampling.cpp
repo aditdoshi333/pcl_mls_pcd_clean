@@ -1,5 +1,6 @@
 #include <pcl/point_types.h>
 #include <pcl/io/pcd_io.h>
+#include <pcl/io/ply_io.h>
 #include <pcl/kdtree/kdtree_flann.h>
 #include <pcl/surface/mls.h>
 
@@ -9,7 +10,7 @@ main (int argc, char** argv)
   // Load input file into a PointCloud<T> with an appropriate type
   pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ> ());
   // Load bun0.pcd -- should be available with the PCL archive in test 
-  pcl::io::loadPCDFile ("/home/ubuntu/ouster_mesh_script/subsample.pcd", *cloud);
+  pcl::io::loadPLYFile ("/home/ubuntu/ouster_mesh_script/subsample.ply", *cloud);
 
   // Create a KD-Tree
   pcl::search::KdTree<pcl::PointXYZ>::Ptr tree (new pcl::search::KdTree<pcl::PointXYZ>);
@@ -35,4 +36,7 @@ main (int argc, char** argv)
   std::cout <<"Done" << std::endl;
   // Save output
   pcl::io::savePCDFile ("/home/ubuntu/ouster_mesh_script/subsample_mls_done.pcd", mls_points);
+
+  // Save output in ply
+  pcl::io::savePLYFileBinary("/home/ubuntu/ouster_mesh_script/subsample_mls_done.ply", mls_points);
 }
