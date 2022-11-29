@@ -31,8 +31,8 @@ def compute_normals(input_point_cloud_path: str, output_point_cloud_path:str, nu
 
 if __name__ == "__main__":
     input_point_cloud_path = "/home/ubuntu/ouster_mesh_script/subsample_mls_done_d10.ply"
+                                
     output_point_cloud_path = "/home/ubuntu/ouster_mesh_script/subsample_mls_with_normals_done.ply"
     compute_normals(input_point_cloud_path, output_point_cloud_path)
-    
     
     

@@ -29,6 +29,10 @@ main (int argc, char** argv)
   mls.setPolynomialOrder (2);
   mls.setSearchMethod (tree);
   mls.setSearchRadius (0.1);
+  mls.setComputeNormals(false);
+  mls.setSqrGaussParam(0.01);
+  mls.setUpsamplingMethod( pcl::MovingLeastSquares<pcl::PointXYZ, pcl::PointNormal>::NONE );
+  
 
   // Reconstruct
   std::cout << "Reconstructing" << std::endl;
