@@ -1,7 +1,7 @@
 import open3d as o3d
 import numpy as np
 import sys
-
+import copy
 print(f"input_cloud {sys.argv[1]}")
 print(f"output_cloud {sys.argv[2]}")
 
@@ -14,10 +14,18 @@ print(mesh)
 
 densities = np.asarray(densities)
 
-print('remove low density vertices')
-vertices_to_remove = densities < np.quantile(densities, 0.08)
-mesh.remove_vertices_by_mask(vertices_to_remove)
-print(mesh)
+# Save the mesh
+o3d.io.write_triangle_mesh("/home/ubuntu/ouster_mesh_script/raw_mesh.ply", mesh)
 
-o3d.io.write_triangle_mesh(sys.argv[2], mesh)
+
+
+t2 = copy.deepcopy(mesh)
+print('remove low density vertices')
+vertices_to_remove = densities < np.quantile(densities, 0.025)
+t2.remove_vertices_by_mask(vertices_to_remove)
+print("t2", t2)
+o3d.io.write_triangle_mesh(sys.argv[2], t2)
+
+
+
 
